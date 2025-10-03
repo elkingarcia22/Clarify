@@ -1,0 +1,12 @@
+services:
+  vllm:
+    image: ghcr.io/vllm-project/vllm-openai:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - VLLM_MODEL=Qwen/Qwen2.5-7B-Instruct
+      - VLLM_DOWNLOAD_DIR=/root/.cache/huggingface
+      - VLLM_MAX_MODEL_LEN=131072
+    volumes:
+      - ./models:/root/.cache/huggingface
+    command: ["--port", "8000", "--host", "0.0.0.0", "--dtype", "auto"]

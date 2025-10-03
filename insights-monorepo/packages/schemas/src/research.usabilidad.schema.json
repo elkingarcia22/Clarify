@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["summary","tasks","frictions","recommendations"],
+  "properties": {
+    "summary": {"type": "string"},
+    "tasks": {"type": "array", "items": {"type": "object", "required": ["name","completed"], "properties": {"name": {"type": "string"}, "completed": {"type": "boolean"}, "time_seconds": {"type": "integer"}}}},
+    "frictions": {"type": "array", "items": {"type": "object", "required": ["step","symptom","severity"], "properties": {"step": {"type": "string"}, "symptom": {"type": "string"}, "heuristic": {"type": "string"}, "severity": {"type": "integer", "minimum": 0, "maximum": 3}}}},
+    "recommendations": {"type": "array", "items": {"type": "object", "required": ["change","impact"], "properties": {"change": {"type": "string"}, "impact": {"type": "string", "enum": ["alto","medio","bajo"]}, "effort": {"type": "string", "enum": ["alto","medio","bajo"]}}}},
+    "items": {"type": "array", "items": {"type": "object"}}
+  }
+}
